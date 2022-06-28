@@ -10,9 +10,12 @@ class UserInformationsController < ApplicationController
     @ticket_ids = @tickets.map(&:id)
     @reviews = Review.select { |r| @ticket_ids.include?(r.ticket_id)}
 
-    url = "https://api.github.com/users/JBlezi"
-    open_url = URI.open(url).read
-    @api = JSON.parse(open_url)
+    if @user_information.github_url
+      github_username = @user_information.github_url.split("/").last
+      url = "https://api.github.com/users/#{github_username}"
+      open_url = URI.open(url).read
+      @api = JSON.parse(open_url)
+    end
   end
 
   def edit
