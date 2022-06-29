@@ -61,15 +61,10 @@
 
     <div class="image-part">
 
-
-      <% if @user_information.first_name == "Chloe" %>
-        <%= image_tag "https://avatars.githubusercontent.com/u/101401180?v=4" %>
-      <% elsif @user_information.first_name == "Luciano" %>
-        <%= image_tag "https://avatars.githubusercontent.com/u/99960138?v=4" %>
-      <% elsif @user_information.first_name == "Julius" %>
-        <%= image_tag "https://avatars.githubusercontent.com/u/101468948?v=4" %>
-      <% else %>
+      <% if @user_information.github_url.nil? %>
         <%= image_tag "https://www.aljazeera.com/wp-content/uploads/2017/11/adec9c20bb774260ac8d667ca8703617_18.jpeg?fit=1000%2C559", style: "float", class: "avatar-extra-large" %>
+      <% else %>
+        <%= image_tag @api["avatar_url"], style: "float", class: "avatar-extra-large" %>
       <% end %>
 
     <%# EDITBUTTON + MODAL START %>
