@@ -72,8 +72,8 @@
 
         <%# this is where the 2nd problem might be %>
 
-      <div class="d-flex justify-content-end">
         <% if current_user == @user_information.user %>
+      <div class="d-flex justify-content-end">
           <button class="btn nav-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             Edit my Profile <i class="fa-solid fa-pen-to-square"></i>
           </button>
@@ -99,6 +99,5 @@
         <% end %>
       <%# EDITBUTTON + MODAL END %>
     </div>
-
   </div>
 </div>
