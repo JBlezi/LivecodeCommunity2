@@ -61,10 +61,10 @@
 
     <div class="image-part">
 
-      <% if @user_information.github_url.nil? %>
+      <% if @user_information.github_url == "https://github.com/" %>
         <%= image_tag "https://www.aljazeera.com/wp-content/uploads/2017/11/adec9c20bb774260ac8d667ca8703617_18.jpeg?fit=1000%2C559", style: "float", class: "avatar-extra-large" %>
       <% else %>
-        <%= image_tag @api["avatar_url"], style: "float", class: "avatar-extra-large" %>
+        <%= image_tag @gh_api["avatar_url"], style: "float", class: "avatar-extra-large" %>
       <% end %>
 
     <%# EDITBUTTON + MODAL START %>

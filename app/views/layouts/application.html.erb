@@ -18,6 +18,10 @@
   </head>
 
   <body>
+    <% if current_user && current_user.user_information.github_url %>
+      <% github_username = current_user.user_information.github_url.split("/").last %>
+      <% @gh_api = JSON.parse(URI.open("https://api.github.com/users/#{github_username}").read) %>
+    <% end %>
     <div class="page-container">
       <div class="navbar-container"><%= render "shared/navbar" %></div>
         <%= render "shared/flashes" %>
