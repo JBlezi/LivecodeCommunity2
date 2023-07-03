@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:home, :index]
+  before_action :fetch_github_info
   include Pundit::Authorization
 
   # Pundit: white-list approach
@@ -17,6 +18,15 @@ class ApplicationController < ActionController::Base
     user_information_path(current_user)
   end
 
+  def fetch_github_info
+    if current_user && current_user.user_information.github_url && current_user.user_information.github_url != "https://github.com/"
+      require 'open-uri'
+      puts "GitHub username: #{current_user.user_information.github_url}"
+      github_username = current_user.user_information.github_url.split("/").last
+      puts "GitHub username: #{github_username}"
+      @gh_api = JSON.parse(URI.parse("https://api.github.com/users/#{github_username}").open.read)
+    end
+  end
 
   private
 

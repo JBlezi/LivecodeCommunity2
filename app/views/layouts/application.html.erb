@@ -7,7 +7,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "application.js", "data-turbo-track": "reload", defer: true %>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +18,6 @@
   </head>
 
   <body>
-    <% if current_user && current_user.user_information.github_url %>
-      <% github_username = current_user.user_information.github_url.split("/").last %>
-      <% @gh_api = JSON.parse(URI.open("https://api.github.com/users/#{github_username}").read) %>
-    <% end %>
     <div class="page-container">
       <div class="navbar-container"><%= render "shared/navbar" %></div>
         <%= render "shared/flashes" %>

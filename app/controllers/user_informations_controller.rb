@@ -6,10 +6,7 @@ class UserInformationsController < ApplicationController
     @tickets = Ticket.where(user_id: @user_information.user_id)
     @ticket_ids = @tickets.map(&:id)
     @reviews = Review.select { |r| @ticket_ids.include?(r.ticket_id)}
-    if @user_information.github_url != "https://github.com/"
-      github_username = @user_information.github_url.split("/").last
-      @gh_api = JSON.parse(URI.open("https://api.github.com/users/#{github_username}").read)
-    end
+    @gh_api = JSON.parse(URI.parse("https://api.github.com/users/JBlezi").open.read)
   end
 
   def edit
