@@ -23,7 +23,7 @@
 }
 
 #closed {
-  border: 1px solid $font;
+  border: 1px solid $closed;
 }
 
 .ticket-link {
@@ -72,7 +72,7 @@
   width: 100%;
   height: 100%;
   text-decoration: none;
-  
+
   h2 {
     padding-right: 30px;
     font-family: 'JetBrains Mono', monospace;

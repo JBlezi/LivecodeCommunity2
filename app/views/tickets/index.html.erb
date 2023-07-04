@@ -1,32 +1,31 @@
 <div class="container">
+  <div class="sticky-top ">
+    <div>
+      <h1>Raise a ticket and find your personal Livecoder</h1>
+      <br>
+    </div>
 
-  <div>
-    <h1>Raise a ticket and find your personal Livecoder</h1>
-    <br>
-  </div>
+    <div class="d-flex justify-content-between">
 
-  <div class="d-flex justify-content-between">
-
-    <div class="search d-flex m-0">
-      <div>
-        <%= form_tag tickets_path, method: :get, class: "d-flex search-bar" do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Search Tickets"
-          %>
-          <%= submit_tag "Search", class: "btn outline-button search-button"%>
-        <% end %>
-        <br>
+      <div class="search d-flex m-0">
+        <div>
+            <%= form_tag tickets_path, method: :get, class: "d-flex search-bar custom-shadow" do %>
+              <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Search Tickets"
+              %>
+            <%= submit_tag "Search", class: "btn outline-button search-button"%>
+          <% end %>
+          <br>
       </div>
     </div>
+      <div class="px-5">
+        <%= link_to "Raise Ticket", new_ticket_path, class: "btn standart-button custom-shadow" %>
+      </div>
 
-    <div class="px-5">
-      <%= link_to "Raise Ticket", new_ticket_path, class: "btn standart-button" %>
     </div>
-
   </div>
-
   <div class="index-container">
 
     <% @tickets.reverse_each do |ticket| %>
@@ -34,7 +33,7 @@
 
         <div class="ticket-link-open ticket-link" id="open">
           <div class="ticket">
-            
+
               <a class="top-area" data-bs-toggle="modal" data-bs-target="#ticket-modal-<%=ticket.id%>">
 
                 <div class="d-flex justify-content-between ticket-status">
@@ -45,7 +44,7 @@
                 <h2><%= ticket.title %></h2>
 
               </a>
-       
+
 
             <div class="bottom-area">
 
